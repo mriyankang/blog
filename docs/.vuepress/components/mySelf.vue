@@ -311,6 +311,12 @@ export default {
   }
   &-key{
     &-content{
+      div{
+        overflow: hidden;
+        margin-bottom: 10px;
+        padding-bottom: 5px;
+        border-bottom: 1px solid #eaecef;
+      }
       a{
         color: #409EFF;
         // margin-bottom: 5px;

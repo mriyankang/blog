@@ -243,7 +243,7 @@ export default {
       p{
         padding: 0;
         line-height: 1;
-        overflow: hidden;
+        // overflow: hidden;
       }
     }
     &-groups{

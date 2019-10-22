@@ -1,6 +1,6 @@
 <template>
   <div class="BackToTop">
-    test
+    test-git-test
   </div>
 </template>
 

@@ -5,10 +5,19 @@ heroText: salvatore and vera
 heroImage: /icon/icon0.jpg
 ---
 
-<back-to-top />
+<my-self />
 
 <style>
-  /* .navbar{
+  .navbar{
     display:none;
-  } */
+  }
+  .links,.page-edit{
+    display:none !important;
+  }
+  .content{
+    max-width:100% !important;
+  }
+  .content:not(.custom) > *:first-child{
+    margin-top:0rem;
+  }
 </style>

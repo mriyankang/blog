@@ -3,7 +3,7 @@
   "version": "1.0.27",
   "description": "",
   "main": "index.js",
-  "repository": "https://github.com/0227vera",
+  "repository": "https://github.com/mriyankang",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "docs:dev": "vuepress dev docs",

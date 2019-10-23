@@ -12,7 +12,7 @@
         </p>
       </div>
       <div class="mySelf-img-groups">
-        <h2>EDUCATIONS</h2>
+        <h2>EDUCATION</h2>
         <div v-for="(item,index) in groups" :key="index+item.name" class="mySelf-img-groups-item">
           <hr>
             <img :src="item.src" alt="">
@@ -51,10 +51,16 @@
       </div>
       <div class="mySelf-intru-ppt">
         <div class="mySelf-intru-ppt-top">
-          <img v-for="(item,index) in ppt.top" :key="item+index" :src="item" alt="">
+          <div v-for="(item,index) in ppt.top" :key="index">
+            <img  :src="item.src" alt="">
+            <span>{{item.text}}</span>
+          </div>
         </div>
-        <div class="mySelf-intru-ppt-bottom">
-          <img v-for="(item,index) in ppt.bottom" :key="item+index"  :src="item" alt="">
+        <div class="mySelf-intru-ppt-bottom" @click="openfile">
+          <div v-for="(item,index) in ppt.bottom" :key="index"  >
+            <img :src="item.src" alt="">
+            <span>{{item.text}}</span>
+          </div>
         </div>
       </div>
     </div>
@@ -81,12 +87,12 @@ export default {
       groups:[
         {
           name:'Shanghai Jiao Tong University',
-          subName:'M.A.  Biomedical Engineering',
+          subName:'M.S.  Biomedical Engineering',
           time:'Sep,2017 -- Mar,2020',
           src:require('../public/img/school/school2.jpg')
         },{
           name:'Xidian University',
-          subName:'B.A.   Biomedical Engineering',
+          subName:'B.S.   Biomedical Engineering',
           time:'Sep,2013 -- July,2017',
           src:require('../public/img/school/school1.jpg')
         },
@@ -129,13 +135,29 @@ export default {
       ],
       ppt:{
         top:[
-          require('../public/img/ppt/1.png'),
-          require('../public/img/ppt/2.png'),
+          {
+            src:require('../public/img/ppt/1.png'),
+            text:'Spiral'
+          },
+          {
+            src:require('../public/img/ppt/2.png'),
+            text:'Rosette'
+          },
+          
         ],
         bottom:[
-          require('../public/img/ppt/3.gif'),
-          require('../public/img/ppt/4.png'),
-          require('../public/img/ppt/5.png')
+           {
+            src:require('../public/img/ppt/3.gif'),
+            text:'IMRI'
+          },
+          {
+            src:require('../public/img/ppt/4.png'),
+            text:'Stack-of-spiral'
+          },
+          {
+            src:require('../public/img/ppt/5.png'),
+            text:'Rosette'
+          }
         ]
       }
     }
@@ -143,7 +165,10 @@ export default {
   mounted () {
   },
   methods: {
-
+    openfile(){
+      console.log(3333)
+      window.open('../public/file/KangYan.pdf')
+    }
   },
   components: {
 
@@ -294,21 +319,43 @@ export default {
       &-top{
         overflow: hidden;
         margin: 0 auto;
-        img{
+        div{
           width: 25%;
           margin-left:25%; 
           float: left;
+          position: relative;
+          img{
+            width: 100%;
+          }
+          span{
+            position: absolute;
+            top: 0;
+            left: 0;
+            color: #000000;
+            font-size: 12px;
+          }
         }
-        img:last-child{
+        div:last-child{
           margin: 0;
         }
       }
       &-bottom{
-        img{
+        div{
           width: 25%;
           float: left;
+          position: relative;
+          img{
+            width: 100%;
+          }
+          span{
+            position: absolute;
+            top: 0;
+            left: 0;
+            color: #ffffff;
+            font-size: 12px;
+          }
         }
-        img:nth-child(2){
+        div:nth-child(2){
           width: 50%;
         }
       }

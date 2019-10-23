@@ -198,7 +198,7 @@ export default {
 .mySelf{
   width: 80%;
   height: auto;
-  margin: 0 auto;
+  margin: 0 auto !important;
   overflow: hidden;
   &>div{
     width: 33.3333333%;

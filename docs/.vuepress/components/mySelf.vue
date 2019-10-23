@@ -1,7 +1,9 @@
 <template>
   <div class="mySelf">
     <div class="mySelf-img">
-      <img src="../public/img/kang.jpg" alt="">
+      <div v-loading="loading.one">
+        <img src="../public/img/kang.jpg" alt="" @load="loading.one=false">
+      </div>
       <div class="mySelf-img-contact">
         <h2>CONTACT INFORMATION</h2>
         <p>
@@ -13,9 +15,9 @@
       </div>
       <div class="mySelf-img-groups">
         <h2>EDUCATION</h2>
-        <div v-for="(item,index) in groups" :key="index+item.name" class="mySelf-img-groups-item">
+        <div v-for="(item,index) in groups" :key="index+item.name" class="mySelf-img-groups-item" v-loading="loading[item.num]">
           <hr>
-            <img :src="item.src" alt="">
+            <img :src="item.src" alt="" @load="loading[item.num]=false">
             <div>
               <div>{{item.name}}</div>
               <div>{{item.subName}}</div>
@@ -26,8 +28,8 @@
       </div>
       <div class="mySelf-img-coll">
         <h2>SUPERVISOR</h2>
-        <div v-for="(item,index) in coll" :key="index+item.name">
-          <img :src="item.src" alt="">
+        <div v-for="(item,index) in coll" :key="index+item.name" v-loading="loading[item.num]">
+          <img :src="item.src" alt=""  @load="loading[item.num]=false">
           <b>
             <a :href="item.href" target="_blank" :title="item.name">{{item.name}}</a>
           </b>
@@ -35,8 +37,8 @@
       </div>
       <div class="mySelf-img-laboratory">
         <h2>LABORATORY</h2>
-        <div>
-          <img src="../public/img/lab.jpg" alt="">
+        <div v-loading="loading.five">
+          <img src="../public/img/lab.jpg" alt=""  @load="loading.five=false">
         </div>
       </div>
     </div>
@@ -51,14 +53,14 @@
       </div>
       <div class="mySelf-intru-ppt">
         <div class="mySelf-intru-ppt-top">
-          <div v-for="(item,index) in ppt.top" :key="index">
-            <img  :src="item.src" alt="">
+          <div v-for="(item,index) in ppt.top" :key="index" v-loading="loading[item.num]">
+            <img  :src="item.src" alt=""  @load="loading[item.num]=false">
             <span>{{item.text}}</span>
           </div>
         </div>
         <div class="mySelf-intru-ppt-bottom">
-          <div v-for="(item,index) in ppt.bottom" :key="index"  >
-            <img :src="item.src" alt="">
+          <div v-for="(item,index) in ppt.bottom" :key="index" v-loading="loading[item.num]">
+            <img :src="item.src" alt=""  @load="loading[item.num]=false">
             <span>{{item.text}}</span>
           </div>
         </div>
@@ -81,6 +83,10 @@
 </template>
 
 <script>
+import Vue from 'vue'
+import { Loading } from 'element-ui'
+Vue.use(Loading.directive)
+import 'element-ui/lib/theme-chalk/index.css';
 export default {
   name: 'mySelf',
   data () {
@@ -90,12 +96,14 @@ export default {
           name:'Shanghai Jiao Tong University',
           subName:'M.S.  Biomedical Engineering',
           time:'Sep,2017 -- Mar,2020',
-          src:require('../public/img/school/school2.jpg')
+          src:require('../public/img/school/school2.jpg'),
+          num:'two'
         },{
           name:'Xidian University',
           subName:'B.S.   Biomedical Engineering',
           time:'Sep,2013 -- July,2017',
-          src:require('../public/img/school/school1.jpg')
+          src:require('../public/img/school/school1.jpg'),
+          num:'three'
         },
 
       ],
@@ -103,7 +111,8 @@ export default {
         {
           src:require('../public/img/du.jpg'),
           href:'http://bme.sjtu.edu.cn/Web/FacultyDetail/31',
-          name:'Yiping Du'
+          name:'Yiping Du',
+          num:'four'
         }
       ],
       article:[
@@ -166,37 +175,47 @@ export default {
         top:[
           {
             src:require('../public/img/ppt/1.png'),
-            text:'Spiral'
+            text:'Spiral',
+            num:'six'
           },
           {
             src:require('../public/img/ppt/2.png'),
-            text:'Rosette'
+            text:'Rosette',
+            num:'seven'
           },
           
         ],
         bottom:[
            {
             src:require('../public/img/ppt/3.gif'),
-            text:'IMRI'
+            text:'IMRI',
+            num:'eight'
           },
           {
             src:require('../public/img/ppt/4.png'),
-            text:'Stack-of-spiral'
+            text:'Stack-of-spiral',
+            num:'nine'
           },
           {
             src:require('../public/img/ppt/5.png'),
-            text:'Rosette'
+            text:'Rosette',
+            num:'ten'
           }
         ]
+      },
+      loading:{
+        one:true,
+        two:true,
+        three:true,
+        four:true,
+        five:true,
+        six:true,
+        seven:true,
+        eight:true,
+        nine:true,
+        ten:true,
       }
     }
-  },
-  mounted () {
-  },
-  methods: {
-  },
-  components: {
-
   }
 }
 </script>

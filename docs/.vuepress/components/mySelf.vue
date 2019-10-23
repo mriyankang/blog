@@ -8,23 +8,28 @@
           <b>Email</b>
         </p>
         <p>
-          kangthomasyan@gmail.com
+          sjtu_yankang@sjtu.edu.cn
         </p>
       </div>
       <div class="mySelf-img-groups">
-        <h2>RESEARCH GROUPS</h2>
-        <div v-for="(item,index) in groups" :key="index+item.name">
+        <h2>EDUCATIONS</h2>
+        <div v-for="(item,index) in groups" :key="index+item.name" class="mySelf-img-groups-item">
           <hr>
-          <a :href="item.href" :title="item.name">{{item.name}}</a>
+            <img :src="item.src" alt="">
+            <div>
+              <div>{{item.name}}</div>
+              <div>{{item.subName}}</div>
+            </div>
+            <div class="mySelf-img-groups-item-time">{{item.time}}</div>
           <br>
         </div>
       </div>
       <div class="mySelf-img-coll">
-        <h2>COLLABORATORS</h2>
+        <h2>SUPERVISER</h2>
         <div v-for="(item,index) in coll" :key="index+item.name">
           <img :src="item.src" alt="">
           <b>
-            <a :href="item.href" :title="item.name">{{item.name}}</a>
+            <a :href="item.href" target="_blank" :title="item.name">{{item.name}}</a>
           </b>
         </div>
       </div>
@@ -32,7 +37,7 @@
     <div class="mySelf-intru">
       <div class="mySelf-intru-name">
         <h2>Kang Yan</h2>
-        <h4>Mri</h4>
+        <h4>MRI Physics, novel pulse sequence development and advanced image reconstruction for fast imaging.</h4>
       </div>
       <hr>
       <div class="mySelf-intru-school">
@@ -42,12 +47,18 @@
       <div class="mySelf-intru-article">
         <div v-for="(item,index) in article">{{item.text}}</div>
       </div>
+      <div class="mySelf-intru-ppt">
+        <div class="mySelf-intru-ppt-top"></div>
+        <div class="mySelf-intru-ppt-bottom">
+          <img src="" alt="">
+        </div>
+      </div>
     </div>
     <div class="mySelf-key">
       <h2>KEY PUBLICATIONS</h2>
       <div class="mySelf-key-content">
         <div v-for="(item,index) in keys" :key="index+item.name">
-          <a :href="item.href" :title="item.name">{{item.name}}</a>
+          <a :href="item.href" target="_blank" :title="item.name">{{item.name}}</a>
           <br>
           <i>{{item.periodical}}</i>
           <br>
@@ -65,141 +76,57 @@ export default {
     return {
       groups:[
         {
-          href:'javascript:;',
-          name:'RESEARCH GROUPS1'
+          name:'上海交通大学',
+          subName:'硕士：生物医学工程',
+          time:'2017.09-2020.03',
+          src:require('../public/img/school/school2.jpg')
         },{
-          href:'javascript:;',
-          name:'RESEARCH GROUPS2'
+          name:'西安电子科技大学',
+          subName:'本科：生物医学工程',
+          time:'2013.09-2017.06',
+          src:require('../public/img/school/school1.jpg')
         },
 
       ],
       coll:[
         {
-          src:require('../public/img/kang.jpg'),
-          href:'javascript:;',
-          name:'COLLABORATORS1'
-        },
-        {
-          src:require('../public/img/kang.jpg'),
-          href:'javascript:;',
-          name:'COLLABORATORS2'
+          src:require('../public/img/du.jpg'),
+          href:'http://bme.sjtu.edu.cn/Web/FacultyDetail/31',
+          name:'杜一平'
         }
       ],
       article:[
         {
-          text:'I develop novel methods for acquiring and reconstructing high-resolution, high-SNR diffusion MRI data from human brain at 3T and 7T. I\'m also actively working on general fast imaging approaches, numerical optimisation and machine learning. '
+          text:'I am a graduate from the School of Biomedical Engineering, Shanghai Jiao Tong University (SJTU), China, where I have been equipped with abundant professional knowledge on MRI Physics, novel pulse sequence development and advanced image reconstruction for fast imaging. '
         },
         {
-          text:'One of my projects involves the use of 3D multi-slab EPI sequence for diffusion acquisition, which enables maximised SNR efficiency. I developed methods to reduce slab boundary artefacts (\'NPEN\')  and improve parallel imaging (\'Slice/Slab-FLEET\'). This technique allows high isotropic-resolution diffusion MRI with high contrast and high SNR. Ultra-high field of 7T enables stronger SNR for MRI acquisition. I developed 3D multi-slab diffusion acquisition at 7T, utilising the SNR gain to achieve higher spatial resolution.'
+          text:'When I was trained as M.S. student, my scientific interests focused on fast imaging including the fast reconstruction algorithm and the fast imaging sequence. We firstly paid attention to the Interventional MRI. From the perspective of compressed sensing, interventional images are extremely sparse in the temporal domain. Using the FLASH Radial sequence, we made it possible that in one second we could get 12 frames of image. On the other hand, previously, the background information could be obtained by pre-scan. Therefore, background information and the novel feature are separated during reconstruction. In this way, we gain more details and SNR.'
         },
         {
-          text:'To reduce diffusion acquisition time, I propose a method (DAGER) to accelerate k-q acquisition using Gaussian processes. Using this method we manage to achieve high in-plane acceleration (R = 6) and high through-plane acceleration (MB = 4, R = 3, R_total = 12) with good image quality.'
+          text:'Compared to radial sequence, spiral sequence does better in the time efficiency. It is also a motion-insensitive acquisition scheme because the k-space center is repeatedly sampled. Since the spiral protocol is not released as product by our MRI scanner vendor, the United Imaging Healthcare, China (UIH), I wrote the 2D spiral/spiral balanced steady state precession/stack-of-spiral protocol for scientific use. Based on the developed spiral sequence, I employed the de-noise idea of compressed sensing to estimate a smoother B0 mapping for B0 inhomogeneity correction.'
         },
         {
-          text:'I received a Marie Curie ITN fellowship at Oxford and obtained my DPhil in 2018. I obtained M.Sc degree in Biomedical Engineering from Tsinghua University in Beijing before I joined FMRIB. I worked on spiral imaging, non-Caretesian reconstruction, optimisation methods and multi-shot diffusion imaging for my master thesis.'
-        },
-        {
-          text:'I develop novel methods for acquiring and reconstructing high-resolution, high-SNR diffusion MRI data from human brain at 3T and 7T. I\'m also actively working on general fast imaging approaches, numerical optimisation and machine learning. '
+          text:'Now, I work on the development of rosette sequence. The rosette trajectory has many advantages such as spectral response, low noise due to the sine-like gradient waveform, self-gated motion correction and quantification of T1/T2/T2* mapping.'
         }
       ],
       keys:[
         {
-          name:'Diffusion Acceleration with Gaussian process Estimated Reconstruction (DAGER)',
-          href:'javascript:;',
-          periodical:'Journal article',
-          timeInfo:'Wu W. et al, (2019), Magnetic Resonance in Medicine, 82, 107 - 125'
+          name:'Blanca Zufiria et al. A feature based convolution neural  network(Fb-CNN) for reconstruction of inventional MRI. NMR in Biomedicine 2019 (submitted)',
+          href:'https://cds.ismrm.org/protected/19MPresentations/abstracts/2434.html',
+          periodical:'Conference paper',
+          timeInfo:'Kang Yan et al. A novel feature based image reconstruction for neuro-IMRI. ISMRM 2019.'
         },
         {
-          name:'Diffusion Acceleration with Gaussian process Estimated Reconstruction (DAGER)',
-          href:'javascript:;',
-          periodical:'Journal article',
-          timeInfo:'Wu W. et al, (2019), Magnetic Resonance in Medicine, 82, 107 - 125'
-        },
-        {
-          name:'Diffusion Acceleration with Gaussian process Estimated Reconstruction (DAGER)',
-          href:'javascript:;',
-          periodical:'Journal article',
-          timeInfo:'Wu W. et al, (2019), Magnetic Resonance in Medicine, 82, 107 - 125'
-        },
-        {
-          name:'Diffusion Acceleration with Gaussian process Estimated Reconstruction (DAGER)',
-          href:'javascript:;',
-          periodical:'Journal article',
-          timeInfo:'Wu W. et al, (2019), Magnetic Resonance in Medicine, 82, 107 - 125'
-        },
-        {
-          name:'Diffusion Acceleration with Gaussian process Estimated Reconstruction (DAGER)',
-          href:'javascript:;',
-          periodical:'Journal article',
-          timeInfo:'Wu W. et al, (2019), Magnetic Resonance in Medicine, 82, 107 - 125'
-        },
-        {
-          name:'Diffusion Acceleration with Gaussian process Estimated Reconstruction (DAGER)',
-          href:'javascript:;',
-          periodical:'Journal article',
-          timeInfo:'Wu W. et al, (2019), Magnetic Resonance in Medicine, 82, 107 - 125'
-        },
-        {
-          name:'Diffusion Acceleration with Gaussian process Estimated Reconstruction (DAGER)',
-          href:'javascript:;',
-          periodical:'Journal article',
-          timeInfo:'Wu W. et al, (2019), Magnetic Resonance in Medicine, 82, 107 - 125'
-        },
-        {
-          name:'Diffusion Acceleration with Gaussian process Estimated Reconstruction (DAGER)',
-          href:'javascript:;',
-          periodical:'Journal article',
-          timeInfo:'Wu W. et al, (2019), Magnetic Resonance in Medicine, 82, 107 - 125'
-        },
-        {
-          name:'Diffusion Acceleration with Gaussian process Estimated Reconstruction (DAGER)',
-          href:'javascript:;',
-          periodical:'Journal article',
-          timeInfo:'Wu W. et al, (2019), Magnetic Resonance in Medicine, 82, 107 - 125'
-        },
-        {
-          name:'Diffusion Acceleration with Gaussian process Estimated Reconstruction (DAGER)',
-          href:'javascript:;',
-          periodical:'Journal article',
-          timeInfo:'Wu W. et al, (2019), Magnetic Resonance in Medicine, 82, 107 - 125'
-        },
-        {
-          name:'Diffusion Acceleration with Gaussian process Estimated Reconstruction (DAGER)',
-          href:'javascript:;',
-          periodical:'Journal article',
-          timeInfo:'Wu W. et al, (2019), Magnetic Resonance in Medicine, 82, 107 - 125'
-        },
-        {
-          name:'Diffusion Acceleration with Gaussian process Estimated Reconstruction (DAGER)',
-          href:'javascript:;',
-          periodical:'Journal article',
-          timeInfo:'Wu W. et al, (2019), Magnetic Resonance in Medicine, 82, 107 - 125'
-        },
-        {
-          name:'Diffusion Acceleration with Gaussian process Estimated Reconstruction (DAGER)',
-          href:'javascript:;',
-          periodical:'Journal article',
-          timeInfo:'Wu W. et al, (2019), Magnetic Resonance in Medicine, 82, 107 - 125'
-        },
-        {
-          name:'Diffusion Acceleration with Gaussian process Estimated Reconstruction (DAGER)',
-          href:'javascript:;',
-          periodical:'Journal article',
-          timeInfo:'Wu W. et al, (2019), Magnetic Resonance in Medicine, 82, 107 - 125'
-        },
-        {
-          name:'Diffusion Acceleration with Gaussian process Estimated Reconstruction (DAGER)',
-          href:'javascript:;',
-          periodical:'Journal article',
-          timeInfo:'Wu W. et al, (2019), Magnetic Resonance in Medicine, 82, 107 - 125'
-        },
-        {
-          name:'Diffusion Acceleration with Gaussian process Estimated Reconstruction (DAGER)',
-          href:'javascript:;',
-          periodical:'Journal article',
-          timeInfo:'Wu W. et al, (2019), Magnetic Resonance in Medicine, 82, 107 - 125'
+          name:'Field Map Estimation in MRI Using Compressed sensing algorithm.  Kang Yan et al. icbbe 2019.',
+          href:'https://cds.ismrm.org/protected/19MPresentations/abstracts/4101.html',
+          periodical:'Poster Presentations',
+          timeInfo:'Shuo Li et al. Dynamic 3D lung MRI using the stack-of-stars sequence with SI navigation. ISMRM 2019'
         }
-      ]
+      ],
+      ppt:{
+        top:[],
+        bottom:[]
+      }
     }
   },
   mounted () {
@@ -259,8 +186,27 @@ export default {
         line-height: 1;
         padding: 0;
       }
-      a{
-        color:#409EFF;
+      &-item{
+        overflow: hidden;
+        img{
+          width: 80px;
+          height: 80px;
+          float: left;
+        }
+        &>div{
+          overflow: hidden;
+          float: left;
+          margin-left: 10px;
+          margin-top: 10px;
+          div{
+            margin-top: 5px;
+          }
+        }
+        .mySelf-img-groups-item-time{
+          float: right;
+          font-size: 14px;
+          margin-top: 42px;
+        }
       }
       
     }
@@ -277,7 +223,7 @@ export default {
         margin-top: 5px;
         img{
         width: 80px;
-        height: 80px;
+        // height: 80px;
         float: left;
         }
         b{
@@ -299,7 +245,7 @@ export default {
      }
      h4{
        margin: 0;
-       color: #409EFF;
+       color: #666666;
      }
    }
    &-article{

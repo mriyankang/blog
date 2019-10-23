@@ -16,6 +16,10 @@ heroImage: /icon/icon0.jpg
   }
   .content{
     max-width:100% !important;
+    padding:0!important;
+  }
+  .page{
+    padding:0 !important;
   }
   .content:not(.custom) > *:first-child{
     margin-top:0rem;

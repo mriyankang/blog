@@ -25,12 +25,18 @@
         </div>
       </div>
       <div class="mySelf-img-coll">
-        <h2>SUPERVISER</h2>
+        <h2>SUPERVISOR</h2>
         <div v-for="(item,index) in coll" :key="index+item.name">
           <img :src="item.src" alt="">
           <b>
             <a :href="item.href" target="_blank" :title="item.name">{{item.name}}</a>
           </b>
+        </div>
+      </div>
+      <div class="mySelf-img-laboratory">
+        <h2>LABORATORY</h2>
+        <div>
+          <img src="../public/img/lab.jpg" alt="">
         </div>
       </div>
     </div>
@@ -40,17 +46,15 @@
         <h4>MRI Physics, novel pulse sequence development and advanced image reconstruction for fast imaging.</h4>
       </div>
       <hr>
-      <div class="mySelf-intru-school">
-        <h3>Shanghai Jiaotong University</h3>
-      </div>
-      <hr>
       <div class="mySelf-intru-article">
         <div v-for="(item,index) in article">{{item.text}}</div>
       </div>
       <div class="mySelf-intru-ppt">
-        <div class="mySelf-intru-ppt-top"></div>
+        <div class="mySelf-intru-ppt-top">
+          <img v-for="(item,index) in ppt.top" :key="item+index" :src="item" alt="">
+        </div>
         <div class="mySelf-intru-ppt-bottom">
-          <img src="" alt="">
+          <img v-for="(item,index) in ppt.bottom" :key="item+index"  :src="item" alt="">
         </div>
       </div>
     </div>
@@ -76,14 +80,14 @@ export default {
     return {
       groups:[
         {
-          name:'上海交通大学',
-          subName:'硕士：生物医学工程',
-          time:'2017.09-2020.03',
+          name:'Shanghai Jiao Tong University',
+          subName:'M.A.  Biomedical Engineering',
+          time:'Sep,2017 -- Mar,2020',
           src:require('../public/img/school/school2.jpg')
         },{
-          name:'西安电子科技大学',
-          subName:'本科：生物医学工程',
-          time:'2013.09-2017.06',
+          name:'Xidian University',
+          subName:'B.A.   Biomedical Engineering',
+          time:'Sep,2013 -- July,2017',
           src:require('../public/img/school/school1.jpg')
         },
 
@@ -92,7 +96,7 @@ export default {
         {
           src:require('../public/img/du.jpg'),
           href:'http://bme.sjtu.edu.cn/Web/FacultyDetail/31',
-          name:'杜一平'
+          name:'Yiping Du'
         }
       ],
       article:[
@@ -124,8 +128,15 @@ export default {
         }
       ],
       ppt:{
-        top:[],
-        bottom:[]
+        top:[
+          require('../public/img/ppt/1.png'),
+          require('../public/img/ppt/2.png'),
+        ],
+        bottom:[
+          require('../public/img/ppt/3.gif'),
+          require('../public/img/ppt/4.png'),
+          require('../public/img/ppt/5.png')
+        ]
       }
     }
   },
@@ -202,10 +213,12 @@ export default {
             margin-top: 5px;
           }
         }
+        position: relative;
         .mySelf-img-groups-item-time{
-          float: right;
+          position: absolute;
           font-size: 14px;
-          margin-top: 42px;
+          bottom: 0;
+          right: 0
         }
       }
       
@@ -218,6 +231,10 @@ export default {
       padding-top: 5px;
       margin-top: 5px;
       overflow: hidden;
+      h2{
+        font-size: 1.4rem;
+        line-height: 1;
+      }
       div{
         overflow: hidden;
         margin-top: 5px;
@@ -234,6 +251,22 @@ export default {
         }
       }
       
+    }
+    &-laboratory{
+      box-sizing: border-box;
+      width: 100%;
+      background: #F2F6FC;
+      padding: 10px;
+      padding-top: 5px;
+      margin-top: 5px;
+      overflow: hidden;
+      h2{
+        font-size: 1.4rem;
+        line-height: 1;
+      }
+      img{
+        width: 100%;
+      }
     }
   }
   &-intru{
@@ -252,6 +285,32 @@ export default {
     div{
         margin-bottom: 10px;
         overflow: hidden;
+      }
+    }
+    &-ppt{
+      overflow: hidden;
+      width: 100%;
+      border: 1px solid #eaecef;
+      &-top{
+        overflow: hidden;
+        margin: 0 auto;
+        img{
+          width: 25%;
+          margin-left:25%; 
+          float: left;
+        }
+        img:last-child{
+          margin: 0;
+        }
+      }
+      &-bottom{
+        img{
+          width: 25%;
+          float: left;
+        }
+        img:nth-child(2){
+          width: 50%;
+        }
       }
     }
   }

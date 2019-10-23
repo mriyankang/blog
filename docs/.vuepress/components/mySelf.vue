@@ -56,7 +56,7 @@
             <span>{{item.text}}</span>
           </div>
         </div>
-        <div class="mySelf-intru-ppt-bottom" @click="openfile">
+        <div class="mySelf-intru-ppt-bottom">
           <div v-for="(item,index) in ppt.bottom" :key="index"  >
             <img :src="item.src" alt="">
             <span>{{item.text}}</span>
@@ -67,12 +67,13 @@
     <div class="mySelf-key">
       <h2>KEY PUBLICATIONS</h2>
       <div class="mySelf-key-content">
-        <div v-for="(item,index) in keys" :key="index+item.name">
-          <a :href="item.href" target="_blank" :title="item.name">{{item.name}}</a>
-          <br>
-          <i>{{item.periodical}}</i>
-          <br>
-          <span>{{item.timeInfo}}</span>
+        <div v-for="(item,index) in keys" :key="index+item.periodical">
+          <h3>{{item.periodical}}</h3>
+          <div v-for="(data,dataIndex) in item.content" >
+            <span>{{dataIndex+1}}. {{data.pre}}</span>
+            <a :href="data.href || 'javascript:;'" target="_blank" :title="data.name">{{data.name}}</a>
+            <span>{{data.sux}}</span>
+          </div>
         </div>
       </div>
     </div>
@@ -121,17 +122,45 @@ export default {
       ],
       keys:[
         {
-          name:'Blanca Zufiria et al. A feature based convolution neural  network(Fb-CNN) for reconstruction of inventional MRI. NMR in Biomedicine 2019 (submitted)',
-          href:'https://cds.ismrm.org/protected/19MPresentations/abstracts/2434.html',
-          periodical:'Conference paper',
-          timeInfo:'Kang Yan et al. A novel feature based image reconstruction for neuro-IMRI. ISMRM 2019.'
+          periodical:'Journal paper',
+          content:[
+            {
+              pre:'Blanca Zufiria et al. ',
+              sux:' NMR in Biomedicine 2019 (submitted)',
+              name:'A feature based convolution neural  network(Fb-CNN) for reconstruction of inventional MRI.',
+              href:'',
+            }
+          ]
         },
         {
-          name:'Field Map Estimation in MRI Using Compressed sensing algorithm.  Kang Yan et al. icbbe 2019.',
-          href:'https://cds.ismrm.org/protected/19MPresentations/abstracts/4101.html',
+          
+          periodical:'Conference paper',
+          content:[
+            {
+              pre:'',
+              sux:'  Kang Yan et al. icbbe 2019.',
+              name:'Field Map Estimation in MRI Using Compressed sensing algorithm.',
+              href:'/file/Field.pdf'
+            }
+          ]
+        },
+        {
           periodical:'Poster Presentations',
-          timeInfo:'Shuo Li et al. Dynamic 3D lung MRI using the stack-of-stars sequence with SI navigation. ISMRM 2019'
-        }
+          content:[
+            {
+              pre:'Kang Yan et al. ',
+              sux:' ISMRM 2019.',
+              name:'A novel feature based image reconstruction for neuro-IMRI.',
+              href:'/file/KangYan.pdf'
+            },
+            {
+              pre:'Shuo Li et al. ',
+              sux:' ISMRM 2019',
+              name:'Dynamic 3D lung MRI using the stack-of-stars sequence with SI navigation.',
+              href:'/file/ShuoLi.pdf'
+            }
+          ]
+        },
       ],
       ppt:{
         top:[
@@ -165,10 +194,6 @@ export default {
   mounted () {
   },
   methods: {
-    openfile(){
-      console.log(3333)
-      window.open('../public/file/KangYan.pdf')
-    }
   },
   components: {
 
@@ -340,12 +365,17 @@ export default {
         }
       }
       &-bottom{
+        overflow: hidden;
         div{
           width: 25%;
+          height: 100%;
           float: left;
           position: relative;
-          img{
+          img,video{
             width: 100%;
+          }
+          video{
+            height: 100%;
           }
           span{
             position: absolute;
@@ -363,32 +393,22 @@ export default {
   }
   &-key{
     &-content{
-      div{
+      &>div{
         overflow: hidden;
         margin-bottom: 10px;
         padding-bottom: 5px;
         border-bottom: 1px solid #eaecef;
+        div{
+          margin-top: 10px;
+           a{
+              color: #409EFF;
+          }
+          span{
+            font-size: 16px;
+          }
+        }
       }
-      a{
-        color: #409EFF;
-        // margin-bottom: 5px;
-        display: block;
-      }
-      i{
-        font-style: normal;
-        background: #409EFF;
-        color: #ffffff;
-        padding: 3px 5px;
-        margin: 5px 0;
-        border-radius: 5px;
-        line-height: 1;
-        // display: block;
-      }
-      span{
-        font-size: 12px;
-        display: block;
-        margin-top: 5px;
-      }
+      
     }
   }
   

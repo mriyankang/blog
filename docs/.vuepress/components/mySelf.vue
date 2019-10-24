@@ -126,7 +126,7 @@ export default {
           content:[
             {
               pre:'Blanca Zufiria et al. ',
-              sux:' NMR in Biomedicine 2019 (submitted)',
+              sux:' NMR in Biomedicine 2019 (submitted).',
               name:'A feature based convolution neural  network(Fb-CNN) for reconstruction of inventional MRI.',
               href:'',
             }
@@ -138,7 +138,7 @@ export default {
           content:[
             {
               pre:'Kang Yan et al.',
-              sux:' International Conference on Biomedical and Bioinformatics Engineering 2019.',
+              sux:' International Conference on Biomedical and Bioinformatics Engineering 2019 (preprint).',
               name:'Field Map Estimation in MRI Using Compressed sensing algorithm.',
               href:'/file/Field.pdf'
             }
@@ -155,7 +155,7 @@ export default {
             },
             {
               pre:'Shuo Li et al. ',
-              sux:' ISMRM 2019',
+              sux:' ISMRM 2019.',
               name:'Dynamic 3D lung MRI using the stack-of-stars sequence with SI navigation.',
               href:'/file/ShuoLi.pdf'
             }

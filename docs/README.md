@@ -1,7 +1,7 @@
 ---
 home: false
 lang: zh-CN
-heroText: salvatore and vera
+heroText: Kang Yan
 heroImage: /icon/icon0.jpg
 ---
 

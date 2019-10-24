@@ -137,8 +137,8 @@ export default {
           periodical:'Conference paper',
           content:[
             {
-              pre:'',
-              sux:'  Kang Yan et al. icbbe 2019.',
+              pre:'Kang Yan et al.',
+              sux:' International Conference on Biomedical and Bioinformatics Engineering 2019.',
               name:'Field Map Estimation in MRI Using Compressed sensing algorithm.',
               href:'/file/Field.pdf'
             }

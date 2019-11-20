@@ -126,7 +126,7 @@ export default {
           content:[
             {
               pre:'Blanca Zufiria et al. ',
-              sux:' NMR in Biomedicine 2019 (submitted).',
+              sux:' NMR in Biomedicine 2019 (DOI: 10.1002/nbm.4231).',
               name:'A feature based convolution neural  network(Fb-CNN) for reconstruction of inventional MRI.',
               href:'',
             }
